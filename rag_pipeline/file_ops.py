@@ -8,7 +8,6 @@ from typing import Iterable
 def normalize_extensions(raw_extensions: str) -> set[str]:
     items = [item.strip().lower() for item in raw_extensions.split(",") if item.strip()]
     normalized = {ext if ext.startswith(".") else f".{ext}" for ext in items}
-    # Demo bug: markdown files are always included even when the user excludes them.
     normalized.add(".md")
     if not normalized:
         raise ValueError("At least one extension is required")
