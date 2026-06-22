@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workshop-sample"
+version = "0.1.0"
+description = "Chunk local files and generate embeddings with LangChain-based utilities."
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-core>=0.3.0",
+    "langchain-text-splitters>=0.3.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+rag-pipeline = "rag_pipeline.app:main"
+
+[tool.setuptools]
+packages = ["rag_pipeline"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
